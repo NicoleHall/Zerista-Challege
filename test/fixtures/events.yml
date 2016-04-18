@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start: MyString
+  finish: MyString
+  name: MyString
+  track_id: 
+
+two:
+  start: MyString
+  finish: MyString
+  name: MyString
+  track_id: 
