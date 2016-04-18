@@ -4,6 +4,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :start
       t.string :finish
       t.string :name
+      t.string :track
       t.references :track, index: true, foreign_key: true
 
       t.timestamps null: false
