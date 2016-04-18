@@ -1,24 +1,18 @@
 require 'csv'
 #
-# namespace :db do
-#
-#   desc "Import the Track info from CSV to track table"
-#   task :tracks => :environment do
-#     counter = 0
-#     tracks_path = "#{Rails.root}/lib/assets/test_event.csv"
-#     CSV.foreach(tracks_path, :headers => true, :header_converters => :symbol) do |row|
-#       track = Track.create(
-#       if row[:track].scan(/\d/) == []
-#         row[:session] = "cross-session"
-#       else
-#         row[:session] = row[:track].scan(/\d/).join
-#       end
-#       )
-#     end
-#     counter += 1 if track.persisted?
-#     puts "Imported #{counter} tracks"
-#   end
-# end
+namespace :db do
+
+  desc "Import the Track info from CSV to track table"
+  task :tracks => :environment do
+    tracks_path = File.path("#{Rails.root}/lib/assets/test_event.csv")
+    csv = CSV.parse(tracks_path, :headers => true)
+
+    csv.each do |row|
+      start, finish, name, track = row
+      Track.create!(session: row[:track])
+    end
+  end
+end
 
 namespace :db do
 
